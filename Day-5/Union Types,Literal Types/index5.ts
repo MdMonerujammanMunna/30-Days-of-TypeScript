@@ -34,6 +34,13 @@ GetUserInfo(82912) //Number type in-put
 // - Function শুধুমাত্র `PaymentMethod` Type Accept করবে।
 // - Console-এ Payment Method Print করবে।
 
+type PaymentMethod = "Bikash" | "Nagad" | "Rocket"
+
+function makePayment(Payment: PaymentMethod) {
+    console.log(Payment)
+}
+
+makePayment("Bikash")
 // ---
 
 // ## Question 3: Employee Status (Union + Literal Type)
