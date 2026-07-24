@@ -1,0 +1,14 @@
+// ## 6. Type vs Interface
+
+// - `type` ব্যবহার করে একটি Student তৈরি করো।
+// Answer----=>
+// - `interface` ব্যবহার করে একটি Student তৈরি করো।
+// Answer----=>
+// - `type` ব্যবহার করে একটি Product তৈরি করো।
+// Answer----=>
+// - `interface` ব্যবহার করে একটি Product তৈরি করো।
+// Answer----=>
+// - একটি User Interface তৈরি করো যেখানে একটি Optional Property থাকবে।
+// Answer----=>
+
+// ---
