@@ -34,13 +34,13 @@ GetUserInfo(82912) //Number type in-put
 // - Function শুধুমাত্র `PaymentMethod` Type Accept করবে।
 // - Console-এ Payment Method Print করবে।
 
-type PaymentMethod = "Bikash" | "Nagad" | "Rocket"
+type PaymentMethod = "Bkash" | "Nagad" | "Rocket"
 
 function makePayment(Payment: PaymentMethod) {
     console.log(Payment)
 }
 
-makePayment("Bikash")
+makePayment("Bkash")
 // ---
 
 // ## Question 3: Employee Status (Union + Literal Type)
@@ -59,6 +59,14 @@ makePayment("Bikash")
 // - Function-এর Parameter হবে `EmployeeStatus` Type।
 // - Console-এ Employee Status Print করবে।
 
+type EmployeeStatus = "Active" | "Inactive" | "On Leave"
+
+
+function updateStatus(Employe: EmployeeStatus) {
+    console.log(Employe)
+}
+
+updateStatus("On Leave")
 // ---
 
 // ## Question 4: Product Price (Union Type)
@@ -73,6 +81,19 @@ makePayment("Bikash")
 // - যদি `price` Number হয়, তাহলে Price Print করুন।
 // - যদি `price` String হয়, তাহলে Price Print করুন।
 
+type Prices = string | number
+
+function displayPrice(price: Prices) {
+    const TypeOf = typeof price;
+    if (TypeOf === "string") {
+        console.log("this is String Value:- ", price)
+    }
+    if (TypeOf === "number") {
+        console.log("this is Number Value:- ", price)
+    }
+}
+displayPrice(45)
+displayPrice("90")
 // ---
 
 // ## Question 5: Theme Switcher (Literal Type)
@@ -90,3 +111,11 @@ makePayment("Bikash")
 // - `changeTheme()` নামে একটি Function তৈরি করুন।
 // - Function শুধুমাত্র `Theme` Type Accept করবে।
 // - বর্তমানে কোন Theme ব্যবহার হচ্ছে তা Console-এ Print করুন।
+
+type Themes = "Light" | "Dark" | "System"
+
+const changeTheme = (Theme: Themes) => {
+    console.log(Theme)
+}
+
+changeTheme("Light")
