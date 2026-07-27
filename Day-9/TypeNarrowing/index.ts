@@ -311,9 +311,26 @@ type student = {
     Roll: number
 }
 
-function checkStudent(data: object) {
-
+function isStudents(Data: student): Data is student {
+    return (
+        typeof Data === "object" &&
+        Data !== null &&
+        typeof Data.Name === "string" &&
+        typeof Data.Roll === "number"
+    )
 }
+
+function checkStudent(data: any): string {
+    if (isStudents(data)) {
+        return (`Hi! My Name is ${data.Name}. My Roll is ${data.Roll}`)
+    }
+    return ("Invalid Student")
+}
+
+console.log(checkStudent({
+    Name: "Munna",
+    Roll: 89
+}))
 // ---
 
 // ## Question 7: Discriminated Union Narrowing
@@ -366,6 +383,28 @@ function checkStudent(data: object) {
 
 // - If status is `"error"`:
 //   - Return error message.
+
+type SuccessResponse = {
+    status: "success"
+    data: string
+}
+type ErrorResponse = {
+    status: "error",
+    message: string
+}
+function handleResponse(response: SuccessResponse | ErrorResponse) {
+    if (response.status === "success") {
+        return response.data
+    }
+    else if (response.status === "error") {
+        return response.message
+    }
+}
+
+console.log(handleResponse({
+    status: "success",
+    data: "i am a good man"
+}))
 
 
 // ---
