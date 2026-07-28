@@ -33,7 +33,16 @@ console.log(student, student2)
 // একটি `product` object তৈরি করো।
 
 // `keyof typeof` ব্যবহার করে object-এর সকল key-এর union type তৈরি করো।
-
+const product = {
+    id: 383,
+    Name: "Pen",
+    Price: 99
+}
+type ProductKeys = keyof typeof product;
+let key: ProductKeys
+key = "Name"
+key = "id"
+key = "Price"
 // ---
 
 // ## Question 3
@@ -47,110 +56,110 @@ console.log(student, student2)
 
 // `keyof` ব্যবহার করে সকল key-এর type তৈরি করো।
 
+interface User {
+    id: number,
+    Name: string,
+    Email: string,
+    Role: string
+}
+let keys: keyof User
+keys = "Email"
+keys = "Name"
+keys = "id"
+keys = "Role"
 // ---
 
 // ## Question 4
 
 // একটি variable তৈরি করো এবং `typeof` ব্যবহার করে তার type অন্য একটি variable-এ ব্যবহার করো।
 
+let Today = "Munna";
+
+type TodayType = typeof Today;
+
+const TodayTow: TodayType = "Joy";
+console.log(TodayTow)
 // ---
 
 // ## Question 5
 
 // একটি `settings` object তৈরি করো এবং `typeof` ব্যবহার করে তার সম্পূর্ণ type reuse করো।
+let settings = {
+    id: 839,
+    Name: "Time",
+    sl: 2,
+    devloper: "Munna"
+}
+type ReuseSettings = typeof settings
+const ReuseSettinges: ReuseSettings = {
+    id: 22,
+    Name: "Date",
+    sl: 3,
+    devloper: "Joy"
+}
+console.log(ReuseSettinges)
+// ---
+
+// # 🟡 Question 6 — Student Management System
+
+// একটি `studentValue` object তৈরি করো যেখানে থাকবে—
+
+// - id
+// - name
+// - department
+// - cgpa
+
+// এখন নিচের কাজগুলো করো—
+
+// - `typeof` ব্যবহার করে `Student` type তৈরি করো।
+// - `keyof typeof` ব্যবহার করে `StudentKeys` type তৈরি করো।
+// - `Student` type ব্যবহার করে নতুন একটি `student2` object তৈরি করো।
+// - `StudentKeys` type দিয়ে একটি variable declare করো যেখানে শুধুমাত্র valid property name assign করা যাবে।
+// - একটি function লেখো যেটি `student` object এবং একটি valid key receive করবে এবং সেই property's value return করবে।
+
+const studentValue = {
+    id: 893,
+    Name: "Munna",
+    Department: "CST",
+    CGPA: 4.89
+}
+
+type StudentValue = typeof studentValue
+type StudentKeys = keyof typeof studentValue
+
+const StudentValue2: StudentValue = {
+    id: 90,
+    Name: "Joy",
+    Department: "CT",
+    CGPA: 5.00
+}
+const DeclaerVariable: StudentKeys = "Name"
+
+function StudentFun<T, K extends keyof T>(obj: T, key: K): T[K] {
+    return (obj[key])
+}
+console.log(StudentFun(studentValue, "Name"))
+// ---
+
+// # 🔴 Question 2 — Generic Property Getter
+
+// একটি **Generic Function** লেখো যেটি যেকোনো object এবং তার একটি valid key receive করবে।
+
+// Function এমনভাবে লিখতে হবে যেন—
+
+// - শুধুমাত্র valid key accept করে।
+// - Invalid key দিলে TypeScript Error দেখায়।
+// - Return type automatically সেই property's type হয়ে যায়।
+
+// এরপর Function-টি নিচের object দিয়ে test করো—
+
+// - User
+// - Product
+// - Employee
 
 // ---
 
-// # 🟡 Intermediate Level
-
-// ## Question 6
-
-// একটি function লেখো যেটি দুইটি parameter নিবে—
-
-// - object
-// - key
-
-// Function শুধুমাত্র object-এর valid key accept করবে এবং সেই key-এর value return করবে।
-
-// ---
-
-// ## Question 7
-
-// একটি `car` object তৈরি করো।
-
-// `keyof typeof` ব্যবহার করে এমন একটি variable declare করো যেখানে শুধুমাত্র valid property name assign করা যাবে।
-
-// ---
-
-// ## Question 8
-
-// একটি `employee` object তৈরি করো।
-
-// `typeof` ব্যবহার করে Employee type তৈরি করো এবং সেই type দিয়ে নতুন employee object বানাও।
-
-// ---
-
-// ## Question 9
-
-// একটি `theme` object তৈরি করো।
-
-// একটি function লেখো যেটি শুধুমাত্র theme-এর valid key accept করবে এবং সেই color return করবে।
-
-// ---
-
-// ## Question 10
-
-// একটি `course` object তৈরি করো।
-
-// `keyof typeof` ব্যবহার করে course-এর সকল key-এর type তৈরি করো এবং সেই type দিয়ে একটি variable declare করো।
-
-// ---
-
-// # 🔴 Advanced Level
-
-// ## Question 11
-
-// একটি Generic Function লেখো যেটি যেকোনো object থেকে নির্দিষ্ট property return করবে।
-
-// Function এমনভাবে লিখতে হবে যাতে invalid key দিলে TypeScript Error দেখায়।
-
-// ---
-
-// ## Question 12
-
-// একটি `company` object তৈরি করো।
-
-// `typeof` ব্যবহার করে type তৈরি করো এবং সেই type দিয়ে একটি array তৈরি করো যেখানে একাধিক company store করা যাবে।
-
-// ---
-
-// ## Question 13
-
-// একটি `profile` object তৈরি করো।
-
-// একটি function লেখো যেটি profile-এর key receive করবে এবং সেই property-এর value return করবে।
-
-// ---
-
-// ## Question 14
-
-// একটি `config` object তৈরি করো যেখানে বিভিন্ন application settings থাকবে।
-
-// `keyof typeof` ব্যবহার করে ConfigKeys type তৈরি করো এবং সেই type ব্যবহার করে একটি function লিখো।
-
-// ---
-
-// ## Question 15
-
-// একটি `languages` object তৈরি করো।
-
-// `typeof` ব্যবহার করে type তৈরি করো এবং সেই type reuse করে নতুন language object তৈরি করো।
-
-// ---
-
-// # 🏆 Real Project Challenge
-
-// ধরো তুমি একটি E-commerce Project বানাচ্ছ।
+// # 🟢 Question 3 — E-Commerce Product Management
 
 // একটি `product` object তৈরি করো যেখানে থাকবে—
 
@@ -163,27 +172,9 @@ console.log(student, student2)
 
 // এখন নিচের কাজগুলো করো—
 
-// - `typeof` ব্যবহার করে Product type তৈরি করো।
-// - `keyof typeof` ব্যবহার করে ProductKeys type তৈরি করো।
+// - `typeof` ব্যবহার করে `Product` type তৈরি করো।
+// - `keyof typeof` ব্যবহার করে `ProductKeys` type তৈরি করো।
+// - `Product` type ব্যবহার করে অন্তত **৫টি product** এর array তৈরি করো।
+// - `ProductKeys` type দিয়ে একটি variable declare করো।
 // - একটি function লেখো যেটি শুধুমাত্র Product-এর valid key accept করবে।
-// - আরেকটি function লেখো যেটি Product-এর যেকোনো property-এর value return করবে।
-// - একই Product type ব্যবহার করে অন্তত ৫টি product-এর array তৈরি করো।
-
-// ---
-
-// # 🎯 Bonus Challenge
-
-// নিচের Object-এর জন্য নিজে নিজে `typeof` এবং `keyof` ব্যবহার করে Practice করো।
-
-// - User
-// - Student
-// - Product
-// - Book
-// - Course
-// - Employee
-// - Company
-// - Theme
-// - Settings
-// - Configuration
-
-// ---
+// - একটি Generic Function লেখো যেটি Product-এর যেকোনো property's value return করবে।
