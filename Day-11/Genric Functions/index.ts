@@ -18,19 +18,38 @@ console.log(identify(true))
 // ### প্রশ্ন ২: একটি Array-এর প্রথম Element Return করো
 
 // এমন একটি Generic Function তৈরি করো যা যেকোনো type-এর একটি array গ্রহণ করবে এবং সেই array-এর প্রথম element return করবে। Function-টি `number`, `string`, `boolean` এবং `object` array-এর সাথে সঠিকভাবে কাজ করতে হবে এবং return type যেন স্বয়ংক্রিয়ভাবে নির্ধারিত হয়।
+function ArrayValue<T>(Array: T[]) {
+    return Array[0]
+}
+console.log(ArrayValue([1, 2, 2, 3, 3]))
+console.log(ArrayValue(["Munna", "Joy", "Roy"]))
+console.log(ArrayValue([true, false, true]))
+console.log(ArrayValue([{ Name: "Munna" }, { Roll: 34 }, { Class: 8 }]))
 
 // ---
 
 // ### প্রশ্ন ৩: দুইটি ভিন্ন Type-এর Data Pair হিসেবে Return করো
 
 // এমন একটি Generic Function তৈরি করো যা দুইটি parameter গ্রহণ করবে। Parameter দুইটি ভিন্ন type-এর হতে পারে। Function-টি এই দুইটি value-কে একটি array অথবা object আকারে return করবে এবং প্রতিটি value-এর type যেন ঠিকভাবে সংরক্ষিত থাকে।
-
+function TwoTypeValue<T, L>(OneType: T, TowType: L): [T, L] {
+    return ([OneType, TowType])
+}
+console.log(TwoTypeValue("String", 89))
 // ---
 
 // ### প্রশ্ন ৪: `keyof` ব্যবহার করে Object-এর Property Return করো
 
 // এমন একটি Generic Function তৈরি করো যা একটি object এবং সেই object-এর একটি valid property name গ্রহণ করবে। `keyof` ব্যবহার করে নিশ্চিত করো যে শুধুমাত্র object-এর বিদ্যমান key-ই parameter হিসেবে পাঠানো যাবে। Function-টি নির্দিষ্ট key-এর value return করবে।
 
+function ValidObject<T, L extends keyof T>(Objects: T, key: L) {
+    return Objects[key]
+}
+const user = {
+    id: 1,
+    name: "Munna",
+    age: 20,
+};
+console.log(ValidObject(user, "name"))
 // ---
 
 // ### প্রশ্ন ৫: Generic Constraint ব্যবহার করে `length` Property যাচাই করো
