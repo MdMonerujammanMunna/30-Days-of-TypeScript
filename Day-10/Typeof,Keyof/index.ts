@@ -157,6 +157,37 @@ console.log(StudentFun(studentValue, "Name"))
 // - Product
 // - Employee
 
+// Generic Function
+function Generic<T, K extends keyof T>(obj: T, key: K): T[K] {
+    return obj[key];
+}
+
+// User Object
+const user = {
+    id: 1,
+    name: "Munna",
+    email: "munna@gmail.com"
+};
+
+// Product Object
+const producto = {
+    id: 101,
+    title: "Laptop",
+    price: 65000
+};
+
+const employee = {
+    id: 5001,
+    name: "Rahim",
+    salary: 40000,
+    isActive: true
+};
+const Produsto = Generic(producto, "price")
+console.log(Produsto)
+const userName = Generic(user, "name");
+console.log(userName);
+const employeeSalary = Generic(employee, "salary");
+console.log(employeeSalary);
 // ---
 
 // # 🟢 Question 3 — E-Commerce Product Management
@@ -178,3 +209,86 @@ console.log(StudentFun(studentValue, "Name"))
 // - `ProductKeys` type দিয়ে একটি variable declare করো।
 // - একটি function লেখো যেটি শুধুমাত্র Product-এর valid key accept করবে।
 // - একটি Generic Function লেখো যেটি Product-এর যেকোনো property's value return করবে।
+
+const productsEcom = {
+    id: 899,
+    title: "A Gaming Mouse",
+    price: 3830,
+    category: "Mouse",
+    stock: 12,
+    rating: 4.8,
+};
+
+// typeof
+type Product = typeof productsEcom;
+
+// keyof typeof
+type ProductEKeys = keyof typeof productsEcom;
+
+// Product type ব্যবহার করে ৫টি product এর array
+const products: Product[] = [
+    {
+        id: 1,
+        title: "Gaming Mouse",
+        price: 3830,
+        category: "Mouse",
+        stock: 12,
+        rating: 4.8,
+    },
+    {
+        id: 2,
+        title: "Mechanical Keyboard",
+        price: 5500,
+        category: "Keyboard",
+        stock: 8,
+        rating: 4.7,
+    },
+    {
+        id: 3,
+        title: "27 Inch Monitor",
+        price: 22000,
+        category: "Monitor",
+        stock: 5,
+        rating: 4.9,
+    },
+    {
+        id: 4,
+        title: "USB Headset",
+        price: 2800,
+        category: "Headphone",
+        stock: 15,
+        rating: 4.5,
+    },
+    {
+        id: 5,
+        title: "Laptop Stand",
+        price: 1200,
+        category: "Accessories",
+        stock: 20,
+        rating: 4.4,
+    },
+];
+
+let productKey: ProductKeys;
+
+function getProductKey(key: ProductKeys): void {
+    console.log(key);
+}
+
+function getProductValue<K extends keyof Product>(
+    product: Product,
+    key: K
+): Product[K] {
+    return product[key];
+}
+
+// Test
+const title = getProductValue(productsEcom, "title"); // string
+const price = getProductValue(productsEcom, "price"); // number
+const stock = getProductValue(productsEcom, "stock"); // number
+const rating = getProductValue(productsEcom, "rating"); // number
+
+console.log(title);
+console.log(price);
+console.log(stock);
+console.log(rating);
