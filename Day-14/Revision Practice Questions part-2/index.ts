@@ -3,13 +3,69 @@
 // # Question 1
 
 // একটি `Student` interface তৈরি করো যেখানে `id`, `name`, `department` এবং optional `phone` থাকবে। এরপর ৫ জন student-এর একটি array তৈরি করো। এমন একটি function লিখো যা student array গ্রহণ করে শুধুমাত্র সব student-এর `name` return করবে।
+interface Students {
+    Id: number,
+    Name: string,
+    Department: string,
+    Phone?: number
+}
+function student(T: Students[]) {
+    console.log(T)
+}
 
+const ArrayOfStudent: Students[] = [
+    {
+        Id: 101,
+        Name: "Monerujjaman Munna",
+        Department: "Computer Science",
+        Phone: 1711111111,
+    },
+    {
+        Id: 102,
+        Name: "Sakib Hasan",
+        Department: "Software Engineering",
+        Phone: 1822222222,
+    },
+    {
+        Id: 103,
+        Name: "Nusrat Jahan",
+        Department: "Information Technology",
+    },
+    {
+        Id: 104,
+        Name: "Rakib Hossain",
+        Department: "Computer Science",
+        Phone: 1933333333,
+    },
+    {
+        Id: 105,
+        Name: "Fahim Ahmed",
+        Department: "Cyber Security",
+    },
+];
+student(ArrayOfStudent)
 // ---
 
 // # Question 2
 
 // একটি `Product` type তৈরি করো যেখানে `id`, `title`, `price`, `stock` থাকবে। এরপর `keyof` ব্যবহার করে এমন একটি Generic Function লিখো যা Product-এর যেকোনো property-এর value return করতে পারে।
+type Product = {
+    Id: number,
+    Title: string,
+    Price: number,
+    Stock: number
+}
+function ProductsGen<T, k extends keyof T>(Products: T, Key: k) {
+    console.log(Products[Key])
+}
+const p = {
+    Id: 84,
+    Title: "sfk",
+    Price: 34,
+    Stock: 83
+}
 
+ProductsGen(p, "Stock")
 // ---
 
 // # Question 3
