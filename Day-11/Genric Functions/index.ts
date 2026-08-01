@@ -55,7 +55,17 @@ console.log(ValidObject(user, "name"))
 // ### প্রশ্ন ৫: Generic Constraint ব্যবহার করে `length` Property যাচাই করো
 
 // এমন একটি Generic Function তৈরি করো যা শুধুমাত্র `length` property রয়েছে এমন value গ্রহণ করবে। `extends` keyword ব্যবহার করে এই constraint প্রয়োগ করো। Function-টি প্রদত্ত value-এর `length` return করবে এবং `string`, `array` ও `length` property থাকা object-এর সাথে কাজ করবে, কিন্তু `number` এর মতো invalid type গ্রহণ করবে না।
-
+function LengthGenric<T extends { length: number }>(params: T): number {
+    return params.length
+}
+console.log(LengthGenric("Munna"))
+console.log(LengthGenric([1, 2, 5]))
+console.log(
+    LengthGenric({
+        Na: "Munna",
+        length: 8
+    })
+)
 // ---
 
 // ## 🎯 শেখার লক্ষ্য
