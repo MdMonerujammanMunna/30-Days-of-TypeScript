@@ -71,7 +71,50 @@ ProductsGen(p, "Stock")
 // # Question 3
 
 // একটি `ApiResponse<T>` Generic Interface তৈরি করো যেখানে `success`, `message`, `data` থাকবে। এরপর User এবং Product-এর জন্য দুটি response object তৈরি করো। এমন একটি Generic Function লিখো যা response-এর `data` return করবে।
+type User = {
+    id: number;
+    name: string;
+    email: string;
+    role: string;
+};
 
+type Producto = {
+    id: number;
+    title: string;
+    price: number;
+    stock: number;
+};
+interface ApiResponse<T> {
+    success: boolean,
+    message: string,
+    data: object
+}
+const userResponse: ApiResponse<User> = {
+    success: true,
+    message: "User fetched successfully",
+    data: {
+        id: 1,
+        name: "Monerujamman Munna",
+        email: "munna@example.com",
+        role: "User",
+    },
+};
+
+const productResponse: ApiResponse<Producto> = {
+    success: true,
+    message: "Product fetched successfully",
+    data: {
+        id: 101,
+        title: "Wireless Mouse",
+        price: 1200,
+        stock: 25,
+    },
+};
+function getResponseData<T>(response: ApiResponse<T>) {
+    console.log(response.data)
+}
+getResponseData(userResponse)
+getResponseData(productResponse)
 // ---
 
 // # Question 4
