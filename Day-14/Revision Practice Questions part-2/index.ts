@@ -120,6 +120,15 @@ getResponseData(productResponse)
 // # Question 4
 
 // একটি Generic Function লিখো যা শুধুমাত্র `length` property থাকা value গ্রহণ করবে। Function-টি value এবং তার length return করবে। `string`, `array` এবং `length` property থাকা object দিয়ে test করো।
+function ValueLength<T extends { length: number }>(value: T) {
+    console.log(value.length)
+}
+ValueLength("Munna")
+ValueLength([1, 2, 5])
+ValueLength({
+    Na: "Munna",
+    length: 8
+})
 
 // ---
 
