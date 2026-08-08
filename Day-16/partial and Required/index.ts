@@ -12,7 +12,20 @@
 //   age: number;
 // };
 // ```
-
+type User = {
+    id: number;
+    name: string;
+    email: string;
+    age: number;
+};
+type UserValue = Partial<User>
+const UserObject: UserValue = {
+    id: 383,
+    name: "Munna",
+    email: "mdmoneruakd@gmai.com",
+    age: 9
+}
+console.log(UserObject)
 // ---
 
 // ## Question 2: Product Update
@@ -27,7 +40,21 @@
 //   stock: number;
 // };
 // ```
-
+type Product = {
+    id: number;
+    name: string;
+    price: number;
+    stock: number;
+};
+type ProductValue = Partial<Product>
+const ProductObject: Product = {
+    id: 83,
+    name: "Mouse",
+    price: 99.99, //
+    stock: 2
+}
+// ProductObject.name = "KeyBoard"
+console.log(ProductObject)
 // ---
 
 // ## Question 3: Employee Registration
@@ -42,7 +69,20 @@
 //   salary?: number;
 // };
 // ```
-
+type Employee = {
+    id?: number;
+    name?: string;
+    department?: string;
+    salary?: number;
+};
+type EmployeeValue = Required<Employee>
+const EmployeeObject: EmployeeValue = {
+    id: 83,
+    name: "Joy",
+    department: "Selles", // if you remove or not given any detais it's gives you an error
+    salary: 10000
+}
+console.log(EmployeeObject)
 // ---
 
 // ## Question 4: Course Information
@@ -57,7 +97,19 @@
 //   price: number;
 // };
 // ```
-
+type Course = {
+    title: string;
+    instructor: string;
+    duration: number;
+    price: number;
+};
+type CourseValue = Partial<Course>
+const CourseObject: CourseValue = {
+    title: "This is good",
+    instructor: "Jack",
+    duration: 180
+}
+console.log(CourseObject)
 // ---
 
 // ## Question 5: Student Admission
@@ -72,12 +124,18 @@
 //   department?: string;
 // };
 // ```
-
+type Student = {
+    id?: number;
+    name?: string;
+    email?: string;
+    department?: string;
+};
+type StudentValue = Required<Student>
+const StudentObject: StudentValue = {
+    id: 8383,
+    name: "munna",
+    email: "makjd@gmai.com",
+    department: "CSE"
+}
+console.log(StudentObject)
 // ---
-
-// # 🎯 Rules
-
-// - `Partial` অথবা `Required` অবশ্যই ব্যবহার করতে হবে।
-// - `any` ব্যবহার করা যাবে না।
-// - সব Object Type-safe হতে হবে।
-// - প্রতিটি Question-এর জন্য Type এবং Object দুটোই তৈরি করতে হবে।
