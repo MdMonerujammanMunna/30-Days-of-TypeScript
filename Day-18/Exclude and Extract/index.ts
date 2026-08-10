@@ -1,9 +1,4 @@
 // # 💻 TypeScript Practice: Exclude & Extract
-
-// নিচের প্রতিটি প্রশ্নে **Exclude** অথবা **Extract** ব্যবহার করে নতুন Type (DTO) তৈরি করতে হবে।
-
-// > **নিয়ম:** প্রতিটি প্রশ্নে মূল Type পরিবর্তন করা যাবে না। শুধুমাত্র Utility Type ব্যবহার করে নতুন DTO তৈরি করতে হবে।
-
 // ---
 
 // # 📝 প্রশ্ন ১: Active User Role DTO
@@ -19,7 +14,10 @@
 // একটি `ActiveUserRoleDto` তৈরি করুন যেখানে `guest` থাকবে না।
 
 // **Hint:** `Exclude` ব্যবহার করুন।
-
+type UserRole = "Admin" | "Editor" | "User" | "Guest"
+type ActiveUserRole = Exclude<UserRole, "Guest">
+const Role: ActiveUserRole = "Admin" //remove this valu You can see Guest valu do not gave you
+console.log(Role)
 // ---
 
 // # 📝 প্রশ্ন ২: Staff Role DTO
@@ -38,7 +36,10 @@
 // - editor
 
 // **Hint:** `Extract` ব্যবহার করুন।
-
+type UserRoleExtract = "admin" | "editor" | "user" | "guest";
+type ActiveUserRoleExtract = Extract<UserRoleExtract, "admin">
+const RoleExtract: ActiveUserRoleExtract = "admin"
+console.log(RoleExtract)
 // ---
 
 // # 📝 প্রশ্ন ৩: Available Payment DTO
@@ -60,6 +61,11 @@
 
 // **Hint:** `Exclude` ব্যবহার করুন।
 
+type PaymentMethod = "Cash" | "Card" | "Bkash" | "Nagad" | "Paypal"
+type PaymentInfo = Exclude<PaymentMethod, "Paypal">
+
+const LocalPaymentDto: PaymentInfo = "Nagad"
+console.log(LocalPaymentDto)
 // ---
 
 // # 📝 প্রশ্ন ৪: Online Payment DTO
@@ -85,7 +91,10 @@
 // - paypal
 
 // **Hint:** `Extract` ব্যবহার করুন।
-
+type OnlinePaymentMethod = "Cash" | "Card" | "Bkash" | "Nagad" | "Paypal"
+type OnlinePaymentInfo = Extract<OnlinePaymentMethod, "Card" | "Bkash" | "Nagad" | "Paypal">
+const OnlinePaymentDto: OnlinePaymentInfo = "Card"
+console.log(OnlinePaymentDto);
 // ---
 
 // # 📝 প্রশ্ন ৫: Vehicle DTO
@@ -125,4 +134,10 @@
 // - `PublicTransportDto` → `Extract`
 // - `PersonalTransportDto` → `Exclude`
 
+type Vehicle = "Car" | "Bike" | "Bus" | "Train" | "Plane"
+type PublicTransport = Extract<Vehicle, "Bus" | "Train" | "Plane">
+const PublicTransportDto: PublicTransport = "Train"
+type PersonalTransport = Exclude<Vehicle, "Bus" | "Train">
+const PersonalTransportDto: PersonalTransport = "Car"
+console.log(PublicTransportDto, PersonalTransportDto)
 // ---
