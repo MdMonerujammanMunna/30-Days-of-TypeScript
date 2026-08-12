@@ -13,7 +13,20 @@
 //   };
 // }
 // ```
-
+function getUser(id: number) {
+    return {
+        id,
+        name: "Munna",
+        email: "munna@example.com",
+    };
+}
+type UserGet = ReturnType<typeof getUser>
+const GetUserInfo: UserGet = {
+    id: 39823,
+    name: "Joy",
+    email: "joua@ak.com"
+}
+console.log(GetUserInfo);
 // ---
 
 // ## Question 2: Login Function
@@ -25,7 +38,14 @@
 //   return true;
 // }
 // ```
-
+function login(email: string, password: string) {
+    return true;
+}
+type LogIN = Parameters<typeof login>
+const LOGIN: LogIN = [
+    "md@gmail.com",
+    "234"
+]
 // ---
 
 // ## Question 3: Product Details
@@ -42,7 +62,22 @@
 //   };
 // }
 // ```
-
+function getProduct() {
+    return {
+        id: 1,
+        name: "Laptop",
+        price: 70000,
+        stock: 15,
+    };
+}
+type GetProduct = ReturnType<typeof getProduct>
+const GetProductInfo: GetProduct = {
+    id: 393,
+    name: "KeyBoard",
+    price: 2000,
+    stock: 5
+}
+console.log(GetUserInfo)
 // ---
 
 // ## Question 4: Student Registration
@@ -59,7 +94,23 @@
 //   return "Registration Successful";
 // }
 // ```
+function registerStudent(
+    name: string,
+    email: string,
+    department: string,
+    semester: number
+) {
+    return "Registration Successful";
+}
+type RegisterStudent = Parameters<typeof registerStudent>
+const StudentRegisterd = [
+    "Munna islam",
+    "mama@gmail.com",
+    "this is a ts 30 day Day-19 ReturnType and Parameters",
+    8
 
+]
+console.log(StudentRegisterd)
 // ---
 
 // ## Question 5: Order Summary
@@ -80,13 +131,30 @@
 // }
 // ```
 
+function createOrder(
+    productId: number,
+    quantity: number,
+    discount: number
+) {
+    return {
+        orderId: 101,
+        total: 2500,
+        success: true,
+    };
+}
+type CreateOrderReturnType = ReturnType<typeof createOrder>
+type CreateOrderParameters = Parameters<typeof createOrder>
+
+const ReturnTypeOrder: CreateOrderReturnType = {
+    orderId: 105,
+    total: 2000,
+    success: false
+}
+const ParametersOrder: CreateOrderParameters = [
+    388,
+    27,
+    10
+]
+console.log(ReturnTypeOrder);
+console.log(ParametersOrder);
 // ---
-
-// # 🎯 Rules
-
-// - `ReturnType` অথবা `Parameters` অবশ্যই ব্যবহার করতে হবে।
-// - `typeof` ব্যবহার করতে হবে।
-// - `any` ব্যবহার করা যাবে না।
-// - সব Type Type-safe হতে হবে।
-// - প্রতিটি Question-এর জন্য Type এবং Object/Variable তৈরি করতে হবে।
-// ```
