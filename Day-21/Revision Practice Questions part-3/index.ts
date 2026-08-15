@@ -30,13 +30,52 @@
 
 // ### Question 01
 // একটি `UserRole` union type দেওয়া আছে। প্রতিটি role-এর জন্য একটি `permissions` array রাখার উপযোগী একটি type তৈরি করুন `Record` ব্যবহার করে।
+type UserRole = "Admin" | "User" | "Guest" | "Creator"
+type permissions = Record<UserRole, boolean>
 
+const UserPermissions: permissions = {
+    "Admin": true,
+    "Creator": false,
+    "Guest": false,
+    "User": true
+}
+console.log(UserPermissions)
 // ### Question 02
 // একটি `Status` union type থেকে প্রতিটি status-এর জন্য `message` এবং `code` রাখার একটি configuration type তৈরি করুন।
+type Statues = "success" | "error" | "panding";
+type StatuesConfiguration = Record<Statues, {
+    Message: string,
+    Code: number
+}>
+const UserStatues: StatuesConfiguration = {
+    "success": {
+        Message: "Your code is Running",
+        Code: 200
+    },
+    "panding": {
+        Message: "Plz wait! Your code in waiting lists",
+        Code: 101
+    },
+    "error": {
+        Message: "Your code not Found",
+        Code: 404
+    }
+}
+console.log(UserStatues)
 
 // ### Question 03
 // একটি `Language` union type ব্যবহার করে প্রতিটি language-এর জন্য একজন translator-এর নাম রাখার type তৈরি করুন।
+type Languages = "BN" | "EN" | "FN" | "EU"
+type Translator = string
+type LanguageTranslator = Record<Languages, Translator>
 
+const TranslatorTeacher: LanguageTranslator = {
+    "BN": "Md.Joy Roy",
+    "EN": "Mr.Alex",
+    "FN": "Dembale",
+    "EU": "Padri"
+}
+console.log(TranslatorTeacher)
 // ### Question 04
 // একটি `ProductCategory` union type ব্যবহার করে প্রতিটি category-এর জন্য product count রাখার একটি type তৈরি করুন।
 
