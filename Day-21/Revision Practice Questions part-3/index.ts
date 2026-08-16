@@ -78,10 +78,25 @@ const TranslatorTeacher: LanguageTranslator = {
 console.log(TranslatorTeacher)
 // ### Question 04
 // একটি `ProductCategory` union type ব্যবহার করে প্রতিটি category-এর জন্য product count রাখার একটি type তৈরি করুন।
-
+type Productes = "Food" | "Device" | "Book"
+type count = number
+type ProductCount = Record<Productes, count>
+const ProductCategory: ProductCount = {
+    "Food": 83,
+    "Book": 89,
+    "Device": 33
+}
+console.log(ProductCategory);
 // ### Question 05
 // একটি `Permission` union type ব্যবহার করে প্রতিটি permission-এর জন্য `boolean` value রাখার একটি type তৈরি করুন।
-
+type Permissiones = "Admin" | "Creator" | "User"
+type PermissionesBol = Record<Permissiones, boolean>
+const PermissionPeopele: PermissionesBol = {
+    "Admin": true,
+    "Creator": false,
+    "User": false
+}
+console.log(PermissionPeopele)
 // ---
 
 // ## 🟡 Part 2 — Partial & Required
