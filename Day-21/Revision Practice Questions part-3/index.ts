@@ -103,19 +103,77 @@ console.log(PermissionPeopele)
 
 // ### Question 06
 // একটি `User` interface থেকে এমন একটি `UserUpdate` type তৈরি করুন যেখানে সব property optional হবে। `Partial` ব্যবহার করতে হবে।
-
+interface User {
+    Name: string,
+    Number: number,
+    Address: string
+}
+type UserUpdate = Partial<User> // Not required to add all value
+const DataUpdate: UserUpdate = {
+    Name: "Munna"
+}
+console.log(DataUpdate);
 // ### Question 07
 // একটি `Product` interface থেকে এমন একটি type তৈরি করুন যেখানে update করার সময় প্রয়োজনীয় property-গুলো optional হবে।
+interface Products {
+    Id: number,
+    Name: string,
+    Price: number,
+    Stock: number
+}
+type ProductUpdate = Partial<Products>
+const updateProducts: ProductUpdate = {
+    Id: 83883,
+    Name: "KeyBoard",
+    Price: 99.99
+}
 
 // ### Question 08
 // একটি `Profile` interface থেকে এমন একটি type তৈরি করুন যেখানে সব property অবশ্যই required থাকবে। `Required` ব্যবহার করুন।
-
+interface Profile {
+    Name?: string,
+    Age?: number,
+    Gender?: "male" | "Female"
+}
+type ProfileProperty = Required<Profile>
+const PropertyProfile: ProfileProperty = {
+    Name: "Munna",
+    Age: 78,
+    Gender: "male"
+}
+console.log(PropertyProfile);
 // ### Question 09
 // একটি `AppConfig` interface-এর সব optional property-কে required করে নতুন configuration type তৈরি করুন।
-
+interface Apps {
+    App?: string,
+    Type?: "Gamming" | "Devlopment" | "System" | "Normal"
+    Company?: string
+}
+type AppsTypes = Required<Apps>
+const AppConfig: AppsTypes = {
+    App: "Facebook",
+    Type: "Normal",
+    Company: "Meta"
+}
+console.log(AppConfig)
 // ### Question 10
 // একটি `Order` interface থেকে এমন একটি update type তৈরি করুন যেখানে প্রথমে সব property optional থাকবে এবং পরে একটি নতুন type তৈরি করতে হবে যেখানে সব property required হবে।
-
+interface Order {
+    id?: number,
+    UserName?: string,
+    Address?: string,
+    Phone?: number
+    ProductName?: string
+}
+type OrderType = Required<Order>
+const NewOrder: OrderType = {
+    id: 738883,
+    UserName: "Munna",
+    Address: "Bangladesh",
+    Phone: 89383928938,
+    ProductName: "Laptop"
+}
+console.log(NewOrder)
 // ---
 
 // ## 🔵 Part 3 — Pick & Omit
