@@ -180,10 +180,38 @@ console.log(NewOrder)
 
 // ### Question 11
 // একটি `User` interface থেকে শুধুমাত্র `name`, `email` এবং `avatar` নিয়ে `UserProfileDto` তৈরি করুন।
+interface UserPick {
+    name: string,
+    Phone: number
+    Age: number,
+    email: string,
+    address: string,
+    Avatar: string,
+}
 
+type PickInfo = Pick<UserPick, "name" | "Avatar" | "email">
+const UserProfileDots: PickInfo = {
+    name: "Munna",
+    Avatar: "IAto",
+    email: "mdm@gmail.com"
+}
 // ### Question 12
 // একটি `User` interface থেকে `password` এবং `refreshToken` বাদ দিয়ে `SafeUser` type তৈরি করুন।
-
+interface UserOmit {
+    Name: string,
+    Age: number,
+    password: string,
+    refreshToken: string,
+    Email: string,
+    Type: "Guest" | "User" | "Admin"
+}
+type OmitInfoForUserOmit = Omit<UserOmit, "password" | "refreshToken">
+const SafeUserDots: OmitInfoForUserOmit = {
+    Type: "Admin",
+    Age: 19,
+    Email: "ma@gmail.com",
+    Name: "We are"
+}
 // ### Question 13
 // একটি `Product` interface থেকে শুধুমাত্র frontend-এ display করার জন্য প্রয়োজনীয় property নিয়ে একটি DTO তৈরি করুন।
 
