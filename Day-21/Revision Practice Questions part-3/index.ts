@@ -195,6 +195,7 @@ const UserProfileDots: PickInfo = {
     Avatar: "IAto",
     email: "mdm@gmail.com"
 }
+console.log(UserProfileDots)
 // ### Question 12
 // একটি `User` interface থেকে `password` এবং `refreshToken` বাদ দিয়ে `SafeUser` type তৈরি করুন।
 interface UserOmit {
@@ -212,15 +213,72 @@ const SafeUserDots: OmitInfoForUserOmit = {
     Email: "ma@gmail.com",
     Name: "We are"
 }
+console.log(SafeUserDots);
 // ### Question 13
 // একটি `Product` interface থেকে শুধুমাত্র frontend-এ display করার জন্য প্রয়োজনীয় property নিয়ে একটি DTO তৈরি করুন।
+interface Producted {
+    Id: string,
+    Price: number,
+    Name: string,
+    Stock: "Available" | "Out of Stock" | "Up coming",
+    Brand: string,
+    Type: string,
+    Seller: string,
+    Total: number,
+    SeppingCharg: number
+}
+type ProductPick = Pick<Producted, "Id" | "Name" | "Price" | "Brand" | "Stock">
+const ProductedDTO: ProductPick = {
+    Name: "Keyboard",
+    Brand: "HP",
+    Id: "K383",
+    Price: 8499,
+    Stock: "Available"
+}
+console.log(ProductedDTO)
 
 // ### Question 14
 // একটি `Employee` interface থেকে sensitive information বাদ দিয়ে একটি public employee type তৈরি করুন।
-
+interface EmployeeInfo {
+    Name: string,
+    Age: number,
+    Phone: number,
+    Email: string,
+    Address: string,
+    Type: string,
+    Branch: string,
+    Blood: string
+}
+type EmployeeOmitInfo = Omit<EmployeeInfo, "Phone" | "Address" | "Age" | "Email">
+const employeeDTO: EmployeeOmitInfo = {
+    Name: "Joy",
+    Blood: "B+",
+    Type: "Full-time",
+    Branch: "IT"
+}
+console.log(employeeDTO)
 // ### Question 15
 // একটি `Order` interface থেকে শুধুমাত্র order summary-এর জন্য প্রয়োজনীয় property নিয়ে একটি `OrderSummaryDto` তৈরি করুন।
-
+interface OderInfo {
+    id: number,
+    Title: string,
+    Type: string,
+    Price: number,
+    UserName: string
+    Address: string,
+    Phone: number,
+    PaymentType: string,
+}
+type OderInfoPick = Pick<OderInfo, "UserName" | "Price" | "Phone" | "Address" | "PaymentType" | "id">
+const OderDTO: OderInfoPick = {
+    id: 655816,
+    UserName: "Munna",
+    Phone: 515414215,
+    Address: "Dhaka, Bangladesh",
+    PaymentType: "Card",
+    Price: 839
+}
+console.log(OderDTO)
 // ---
 
 // ## 🟠 Part 4 — Exclude & Extract
