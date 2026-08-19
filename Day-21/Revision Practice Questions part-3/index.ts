@@ -285,10 +285,16 @@ console.log(OderDTO)
 
 // ### Question 16
 // একটি `UserRole` union type থেকে `admin` role বাদ দিয়ে নতুন role type তৈরি করুন।
-
+type UserRoleType = "Admin" | "User" | "Guest" | "Creator"
+type NewRleTYpe = Exclude<UserRoleType, "Admin">
+const NewUserType: NewRleTYpe = "User"
+console.log(NewUserType)
 // ### Question 17
 // একটি `Status` union type থেকে শুধুমাত্র active-related statusগুলো নিয়ে নতুন type তৈরি করুন।
-
+type Status = "Done" | "Pending" | "Error" | "Warring" | "Success"
+type MainStatus = Extract<Status, "Done" | "Success">
+const ActiveStatus: MainStatus = "Done"
+console.log(ActiveStatus)
 // ### Question 18
 // একটি union type থেকে সব numeric type বাদ দিয়ে শুধুমাত্র non-numeric type তৈরি করুন।
 
