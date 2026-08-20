@@ -297,13 +297,26 @@ const ActiveStatus: MainStatus = "Done"
 console.log(ActiveStatus)
 // ### Question 18
 // একটি union type থেকে সব numeric type বাদ দিয়ে শুধুমাত্র non-numeric type তৈরি করুন।
-
+type AllType = number | bigint | string | boolean | null | undefined | symbol;
+type NonNumericType = Exclude<AllType, number | bigint>
+const NumericTypeValue: NonNumericType = true
 // ### Question 19
 // একটি `Permission` union type থেকে শুধুমাত্র read-related permissionগুলো আলাদা করুন।
-
+type Permission =
+    "read"
+    | "write"
+    | "delete"
+    | "readProfile"
+    | "readSettings";
+type PermissionRead = Extract<Permission, "readProfile" | "readSettings" | "read">
+const ReadPermission: PermissionRead = "readProfile"
 // ### Question 20
 // দুটি আলাদা union type দেওয়া হলে তাদের মধ্যে common values বের করে নতুন type তৈরি করুন।
+type RoleA = "admin" | "editor" | "user";
+type RoleB = "editor" | "user" | "guest";
 
+type CommonRoles = Extract<RoleA, RoleB>;
+const CommonValues: CommonRoles = "editor"
 // ---
 
 // ## 🟣 Part 5 — ReturnType & Parameters
