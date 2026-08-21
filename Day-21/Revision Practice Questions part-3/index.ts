@@ -323,19 +323,80 @@ const CommonValues: CommonRoles = "editor"
 
 // ### Question 21
 // একটি function-এর return value থেকে `ReturnType` ব্যবহার করে নতুন type তৈরি করুন।
+function getUser() {
+    return {
+        id: 1,
+        name: "Rahim",
+        email: "rahim@example.com",
+    };
+}
 
+type UserFun = ReturnType<typeof getUser>;
+const ValueUser: UserFun = {
+    id: 837,
+    email: "Man",
+    name: "man@gmail.com"
+}
+console.log(ValueUser);
 // ### Question 22
 // একটি function-এর parameter list থেকে `Parameters` ব্যবহার করে নতুন tuple type তৈরি করুন।
+function createUser(name: string, age: number, isAdmin: boolean) {
+    return {
+        Name: name
+        , Age: age,
+        Admin: isAdmin
+    }
+}
 
+type UserParams = Parameters<typeof createUser>;
+const TupleUser: UserParams = [
+    "Munna", 39, false
+
+]
+console.log(TupleUser)
 // ### Question 23
 // একটি API function-এর return type সরাসরি function থেকে বের করে একটি নতুন type তৈরি করুন।
+async function fetchUser() {
+    const response = await fetch("/api/user");
+    return response.json() as Promise<{
+        id: number;
+        name: string;
+        email: string;
+    }>;
+}
 
+type UserResponse = Awaited<ReturnType<typeof fetchUser>>;
+const responseUserValu: UserResponse = {
+    name: "Name",
+    email: "Email@gai.com",
+    id: 938
+}
 // ### Question 24
 // একটি function-এর দ্বিতীয় parameter-এর type বের করে নতুন type হিসেবে ব্যবহার করুন।
+function updateUser(id: number, name: string, age: number) {
+    return {
+        Name: name,
+        id: id,
+        age: age
+    }
+}
 
+type UserName = Parameters<typeof updateUser>[1];
+const PrametertypeUser: UserName = "HI"
 // ### Question 25
 // একটি function-এর parameters এবং return value—দুটোর type utility ব্যবহার করে বের করে একটি নতুন type structure তৈরি করুন।
+function createUserOn(name: string, age: number) {
+    return {
+        id: 1,
+        name,
+        age,
+    };
+}
 
+type CreateUserStructure = {
+    params: Parameters<typeof createUserOn>;
+    result: ReturnType<typeof createUserOn>;
+};
 // ---
 
 // ## 🔴 Part 6 — Type Guards & Custom Type Guards
